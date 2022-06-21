@@ -1,0 +1,15 @@
+{
+  "name": "0_progetto",
+  "version": "1.0.0",
+  "description": "descrizione progetto",
+  "main": "reverseLongLat_toName.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "geoip-lite": "^1.4.5"
+  }
+}
