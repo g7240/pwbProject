@@ -11,7 +11,7 @@ const express = require('express')
 const app = express()
 const port = 9001
 
-//napp.set('trust proxy', true)
+
 app.get('/', (req, res) => {
   const axios = require("axios");
   // API
