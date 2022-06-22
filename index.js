@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   axios.get(URL)
   .then((resp) => {
     console.log(resp)
-    res.json({"satatus":"bene","risposta":resp.data});
+    res.json({"richiesta":URL, "satatus":"bene","risposta":resp.data});
   })
   .catch((error) => {
     console.log(error)
