@@ -1,29 +1,33 @@
 /* MATERIALI UTILI
 (my ip and position api)
-http://ip-api.com/json/IPv4address // <-- <-- <-- <--
-
-(geolocation api free)
-Top 10 Best IP Geolocation APIs (in 2022) https://rapidapi.com/blog/ip-geolocation-api/
-
-(backend node js geolocation) // <-- <-- <-- <--
-10 Best Node.js IP Geolocation API Libraries https://openbase.com/categories/js/best-nodejs-ip-geolocation-api-libraries
-
-
+https://ip-api.com/
+https://www.iplocation.net/
+https://ipgeolocation.io/
+https://ipregistry.co/pricing // first 100000 free access
+//il modulo di express require('geoip-lite'); non è accurato
 */
 
 const express = require('express')
 const app = express()
-const port = 9000
+const port = 9001
 
-app.set('trust proxy', true)
+//napp.set('trust proxy', true)
 app.get('/', (req, res) => {
-  var geoip = require('geoip-lite');
-  
-  var ip = req.ip; 
-  var geo = geoip.lookup(ip);
+  const axios = require("axios");
+  // API
+  const URL = "https://api.iplocation.net/?ip="+req.ip;
 
-  console.log(ip,geo) 
-  res.send({"ip":ip,"geo":geo});
+  // Send a GET request to the API
+  axios.get(URL)
+  .then((resp) => {
+    console.log(resp)
+    res.json({"satatus":"bene","risposta":resp.data});
+  })
+  .catch((error) => {
+    console.log(error)
+    res.send({"satatus":"male","risposta":error.data});
+  });
+  
 })
 
 app.listen(port, () => {
