@@ -14,7 +14,7 @@ app.use(express.static('public'))
 })*/
 
 /** SERVO PAGINA CON IMMAGINI E NOME CITTA PERSONALIZZATI IN BASE ALLA QUERY */
-app.set('views',path.join(__dirname,'views'))
+app.set('/views',path.join(__dirname,'views'))
 app.set('view engine','ejs')
 app.get('/search', (req, res) => {
   console.log("rispondo con pagina creata su misura")
