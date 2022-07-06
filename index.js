@@ -59,7 +59,9 @@ app.get('/', (req, res) => {
   // Send a GET request to the API
   axios.get(URL)
   .then((resp) => {
-    console.log({"rispostaGeoIP":resp})
+    console.log({"ecco la risposta dell'API di geolocationIP":resp})
+    console.log(resp.data)
+    console.log(resp.data.countryCode, resp.data.city)
     let cc= res.data.countryCode
     let cty= res.data.city
     res.statusCode = 302;
@@ -69,7 +71,7 @@ app.get('/', (req, res) => {
   })
   .catch((error) => {
     console.log(error)
-    res.send({"satatus":"male","risposta":error.data});
+    res.send({"satatus":"andataMale","risposta":error});//error.data
   });
   
 })
