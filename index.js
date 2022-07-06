@@ -60,8 +60,8 @@ app.get('/', (req, res) => {
   axios.get(URL)
   .then((resp) => {
     console.log({"rispostaGeoIP":resp})
-    let cc= resp.countryCode
-    let cty= resp.city
+    let cc= res.data.countryCode
+    let cty= res.data.city
     res.statusCode = 302;
     res.setHeader("Location", url+"search?city="+cty+'&country='+cc);
     //res.send({"indirizzo": url+"/search?city="+cty+'&country='+cc})
