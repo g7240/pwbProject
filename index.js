@@ -50,7 +50,7 @@ app.get('/search', (req, res) => {
 /** REINDIRIZZO DA INDEX A QUERY TRAMITE GEOLOCALIZZAZIONE IP */
 app.set('trust proxy', true)
 app.get('/', (req, res) => {
-  console.log("rispondo con tracciamento e reindirizzamento ad ock")
+  console.log("rispondo con tracciamento e reindirizzamento ad ock dell'ip:",req.ip)
   var url = req.protocol + '://' + req.get('host') + req.originalUrl; //mi da l'url da dove proviene la richiesta
   const axios = require("axios");
   // API
@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
   // Send a GET request to the API
   axios.get(URL)
   .then((resp) => {
-    console.log({"rispostaGeoIp":resp})
+    console.log({"rispostaGeoIP":resp})
     let cc= resp.countryCode
     let cty= resp.city
     res.statusCode = 302;
