@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
   // Send a GET request to the API
   axios.get(URL)
   .then((resp) => {
-    //console.log(resp)
+    console.log(resp)
     let cc= resp.countryCode
     let cty= resp.city
     res.statusCode = 302;
