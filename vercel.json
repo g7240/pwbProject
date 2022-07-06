@@ -13,7 +13,11 @@
         },
         {
             "src": "/public/(.*)",
-            "dest": "/public"
-        }
+            "dest": "/public/"
+        },
+        {
+            "src": "/views/(.*)",
+            "dest": "/views/"
+        },
     ]
 }
