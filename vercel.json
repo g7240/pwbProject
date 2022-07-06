@@ -14,5 +14,6 @@
         {
             "src": "/public/(.*)",
             "dest": "/public"
+        }
     ]
 }
