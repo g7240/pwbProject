@@ -7,7 +7,7 @@ const port = 9000
 
 
 
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public/'))
 /*app.get('/', (req, res) => {
   console.log("rispondo con index")
     res.sendFile("./index.html",{root:__dirname})
