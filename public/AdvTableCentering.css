@@ -1,0 +1,78 @@
+html, body {
+    padding: 0;
+    margin:0;     /* This is used to reset any browser-default margins */
+    height:100vh; /* This is needed to overcome a Chrome bug. */
+    width:100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+table{margin-top: 25px;}
+table.B, table.C, table.D, table.E{ display: none; }
+.precipitazioni, .visibil, .vento, .direzione, .raffiche{ /* .Tperc, .prob,  .umidit,*/
+  visibility: collapse;
+}
+img.ring{
+  border-radius: 50%;
+  background: white;/*rgb(255, 255, 161); 
+  /*background-color: white;*/
+  width: 1.5cm;
+  height: auto;
+}
+
+.main {
+  width: 85%;
+  /*height: 100%;*/
+  margin: auto;
+  display:block;
+  position: relative;
+}
+footer{
+    width: 85%;
+    /*margin-top: 930px;
+    margin-bottom: 500px;*/
+    padding-top: 2cm;
+    padding-bottom: 1.4cm;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+footer p{
+    padding-top: 2cm;
+    border-top: 1px solid rgba(0,0,0,0.15);
+}
+@media (min-width:992px){
+    div.content{
+        width: calc(100% - 200px)
+    }
+    div.right-advertising{
+        border: 5px solid gray;
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 200px;
+        height: 100%;
+    }
+    div.right-advertising::after{
+      content: "Spazio inserzioni";
+    }
+    div.advertising-box {
+        display: none;
+    }
+}
+@media (max-width:992px){
+    div.advertising-box {
+        display: block;
+        width: 250px;
+        height: 100px;
+
+        padding: 10px;
+        border: 5px solid gray;
+        margin: 15px auto;/*center*/
+    }
+    div.advertising-box::after{content: "Spazio inserzioni";}
+    div.right-advertising{
+        display: none;
+    }
+}

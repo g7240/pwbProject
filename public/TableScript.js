@@ -82,11 +82,12 @@ fetch(url)
         }
     }
     else
-        document.getElementById("meteoUnsuccesMessage").innerText= "ErrCod={"+o.cod+"} Message={"+o.message+"}."
+        document.getElementById("meteoUnsuccesMessage").innerText= "Errore nel caricamento dei dati meteo. Codice errore: "+o.cod+'. Messaggio di errore: "'+o.message+'"'
 })
 .catch((err) => {
     console.log(err)
     document.getElementById("meteoUnsuccesMessage").innerText= err
+    
 });
 
 

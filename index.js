@@ -22,29 +22,36 @@ app.get('/search', (req, res) => {
   const {city,country}= req.query
   
   const client = new GoogleImages('173566bad65e72385','AIzaSyBwQt4tzdNR6l3t8cw7eVcBSozQrG9UG4M');
-  client.search(city, {imgSize: "xlarge"})
-	.then(images => {// https://unsplash.com/ https://it.wikipedia.org/
-    //console.log(images)
-		for(let i=0;i<images.length;i++){
-      if(images[i].width<2.6*images[i].height && images[i].height<images[i].width && images[i].width>800) 
-        urls.push(images[i].url)
-      //console.log("ho pusciato ",images[i].url)
-    }
-    if(urls.length==0){
+  if(city=="undefined" && country=="undefined"){
+    urls.push("https://live.staticflickr.com/2693/4453498888_f576a9afd5_b.jpg")
+    urls.push("https://upload.wikimedia.org/wikipedia/commons/4/40/Gfp-sunlight-streaming-above-the-clouds.jpg")
+    urls.push("https://upload.wikimedia.org/wikipedia/commons/b/b7/Sunset_above_the_clouds.jpg")
+    res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
+  }
+  else
+    client.search(city, {imgSize: "xlarge"})
+    .then(images => {// https://unsplash.com/ https://it.wikipedia.org/
+      //console.log(images)
+      for(let i=0;i<images.length;i++){
+        if(images[i].width<2.6*images[i].height && images[i].height<images[i].width && images[i].width>800) 
+          urls.push(images[i].url)
+        //console.log("ho pusciato ",images[i].url)
+      }
+      if(urls.length<=2){
+        urls.push("https://live.staticflickr.com/2693/4453498888_f576a9afd5_b.jpg")
+        urls.push("https://upload.wikimedia.org/wikipedia/commons/4/40/Gfp-sunlight-streaming-above-the-clouds.jpg")
+        urls.push("https://upload.wikimedia.org/wikipedia/commons/b/b7/Sunset_above_the_clouds.jpg")
+      }
+      console.log({"urls mandati bene":urls})
+      res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
+    }).catch(error => {
       urls.push("https://live.staticflickr.com/2693/4453498888_f576a9afd5_b.jpg")
       urls.push("https://upload.wikimedia.org/wikipedia/commons/4/40/Gfp-sunlight-streaming-above-the-clouds.jpg")
       urls.push("https://upload.wikimedia.org/wikipedia/commons/b/b7/Sunset_above_the_clouds.jpg")
-    }
-		console.log({"urls mandati bene":urls})
-    res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
-	}).catch(error => {
-		urls.push("https://live.staticflickr.com/2693/4453498888_f576a9afd5_b.jpg")
-		urls.push("https://upload.wikimedia.org/wikipedia/commons/4/40/Gfp-sunlight-streaming-above-the-clouds.jpg")
-		urls.push("https://upload.wikimedia.org/wikipedia/commons/b/b7/Sunset_above_the_clouds.jpg")
-		console.log({"errore nella ricerca delle immagini":error})
-    console.log({"urls mandati non bene":urls})
-    res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
-	});
+      console.log({"errore nella ricerca delle immagini":error})
+      console.log({"urls mandati non bene":urls})
+      res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
+    });
 }) 
 
 /** REINDIRIZZO DA INDEX A QUERY TRAMITE GEOLOCALIZZAZIONE IP */
