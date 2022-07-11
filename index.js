@@ -8,10 +8,24 @@ const port = 9000
 
 
 app.use(express.static(__dirname + '/public/'))
-/*app.get('/', (req, res) => {
-  console.log("rispondo con index")
-    res.sendFile("./index.html",{root:__dirname})
-})*/
+/** Servo pagine statiche */
+app.get('/Terms', (req, res) => {
+  console.log("rispondo con Terms")
+  res.send("<h1>Terms page</h1><p>This page is a placeholder for a possible terms page</p>")
+})
+app.get('/Privacy', (req, res) => {
+  console.log("rispondo con Privacy")
+  res.send("<h1>Privacy page</h1><p>This page is a placeholder for a possible privacy page</p>")
+})
+app.get('/ChiSiamo', (req, res) => {
+  console.log("rispondo con ChiSiamo")
+  res.send("<h1>Autore: Gabriele Bellini</h1><p>Studente di Sicurezza dei Sistemi e delle Reti Informatiche all'UniMI</p>")
+})
+app.get('/Relazione', (req, res) => {
+  console.log("rispondo con Relazione")
+  res.sendFile("./public/Relazione.html",{root:__dirname})
+})
+
 
 /** SERVO PAGINA CON IMMAGINI E NOME CITTA PERSONALIZZATI IN BASE ALLA QUERY */
 app.set('/views',path.join(__dirname,'views'))

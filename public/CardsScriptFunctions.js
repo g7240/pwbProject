@@ -51,7 +51,8 @@ function CardsMenager(urls,title){
     //"img_1",      "h2_name1",      "a_url1"
     for(i=1;i<=3;i++){
         let img= document.getElementById("img_"+i)
-        img.setAttribute('src',localStorage.getItem("url"+i))
+        img.setAttribute('data-src',localStorage.getItem("url"+i))
+        img.alt= "Immagine "+i+" di 3 carte"
         let h2= document.getElementById("h2_name"+i)
         h2.innerText= localStorage.getItem("name"+i)
         let link= document.getElementById("a_url"+i)

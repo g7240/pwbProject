@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sito di meteo, weather forecast website">
+    <meta name="keywords" content="meteo, precipitazioni, rainfall, weather forecast, city immages">
+    <meta name="author" content="Gabriele Bellini">
+
+    <title>Meteo <%= city%> <%= country%></title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+    <!-- IL MIO FILE CSS -->
+    <link href="stile.css" rel="stylesheet">
+    <link rel="stylesheet" href="./AdvTableCentering.css">
+  </head>
+
+
+
+  <body style="overflow: auto">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">BrandMeteo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://pwb-project-git-main-g7240.vercel.app/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ChiSiamo">Chi siamo</a><!-- servi una pagina statica-->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Relazione">Relazione</a><!-- servi una pagina statica-->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Archiv">Archivio documenti</a><!-- naviga libero nella cartella dock-->
+              </li>
+            </ul>
+            <div id="selectNation" style="width: 3.7cm;" class="d-flex"></div><!-- https://www.w3schools.com/tags/att_select_form.asp -->
+            <script>
+              fetch("./selectNationCode.html")
+              .then(response => {
+                return response.text()
+              })
+              .then(data => {
+                document.getElementById("selectNation").innerHTML = data;
+              });
+            </script>
+            <form id="formid" class="d-flex" action="/search?">
+              <input class="form-control me-2" type="search" placeholder="città" aria-label="Search" name="city">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- CAROSELLO -->
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="carousel-indicators" class="carousel-indicators">
+          
+        </div>
+        <div id="carousel-inner" class="carousel-inner">
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+
+      <!-- CARTE -->
+      <div class="container marketing">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img id="img_1" class="card-img-top" alt="Card image cap" style="max-height: 180px; width: auto">
+            <h2 id="h2_name1">Heading</h2>
+            <p>Cerca in ogni posto del mondo, a qualsiasi ora del giorno senza limiti</p>
+            <p><a id="a_url1" class="btn btn-secondary" href="#">Vai al meteo &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img id="img_2" class="card-img-top" alt="Card image cap" style="max-height: 180px; width: auto">
+            <h2 id="h2_name2">Heading</h2>
+            <p>nessun posto è troppo lontano, lasciati guidare dalla tua immaginazione</p>
+            <p><a id="a_url2" class="btn btn-secondary" href="#">Vai al meteo &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img id="img_3" class="card-img-top" alt="Card image cap" style="max-height: 180px; width: auto">
+            <div class="card-body">
+              <h2 id="h2_name3">Heading</h2>
+              <p>Esplora, viaggia e pianivica ogni tuo spostamento con il nostro sito di meteo</p>
+              <p><a id="a_url3" class="btn btn-secondary" href="#">Vai al meteo &raquo;</a></p>
+            </div>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+
+      <!-- CORPO CENTRALE CON METEO E ADVERTISING -->
+      <div class="main">
+        <!-- BOTTONI SELEZIONA GIORNO -->
+        <div class="content">
+            <div class="advertising-box"></div>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="showTable(0)" checked>
+                <label class="btn btn-outline-dark btn-outline-secondary" for="btnradio1">Oggi</label>
+            
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="showTable(1)">
+                <label id="labelDay1" class="btn btn-outline-dark btn-outline-secondary" for="btnradio2"></label>
+            
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="showTable(2)">
+                <label id="labelDay2" class="btn btn-outline-dark btn-outline-secondary" for="btnradio3"></label>
+            
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" onclick="showTable(3)">
+                <label id="labelDay3" class="btn btn-outline-dark btn-outline-secondary" for="btnradio4"></label>
+            
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" onclick="showTable(4)">
+                <label id="labelDay4" class="btn btn-outline-dark btn-outline-secondary" for="btnradio5"></label>
+            </div>
+            <br>
+            <!-- BOTTONI SELEZIONA COLONNA TABELLA -->
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" onclick="ColumnVisibility('Tperc')" checked>
+                <label class="btn btn-outline-secondary" for="btncheck3">Tperc</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off"  onclick="ColumnVisibility('prob')" checked>
+                <label class="btn btn-outline-secondary" for="btncheck4">probabilità</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck0" autocomplete="off" onclick="ColumnVisibility('umidit')" checked>
+                <label class="btn btn-outline-secondary" for="btncheck0">umidità</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" onclick="ColumnVisibility('precipitazioni')">
+                <label class="btn btn-outline-secondary" for="btncheck1">precipitazioni</label>
+            </div>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" onclick="ColumnVisibility('visibil')">
+                <label class="btn btn-outline-secondary" for="btncheck2">visibilità</label>
+                
+                <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" onclick="ColumnVisibility('vento')">
+                <label class="btn btn-outline-secondary" for="btncheck5">vento</label>
+            
+                <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" onclick="ColumnVisibility('direzione')">
+                <label class="btn btn-outline-secondary" for="btncheck6">direzione</label>
+            
+                <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" onclick="ColumnVisibility('raffiche')">
+                <label class="btn btn-outline-secondary" for="btncheck7">raffiche</label>
+            </div>
+            <!-- SCHELETRO DELLE 5 TABELLE RESPONSIVE RIEMPITE DINAMICAMENTE CON METEO-->
+            <div class="table-responsive">
+                <table id="table0" class="table A  table-striped ">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="Tperc">
+                        <col>
+                        <col class="prob">
+                        <col class="precipitazioni">
+                        <col class="umidit">
+                        <col class="visibil">
+                        <col class="vento">
+                        <col class="direzione">
+                        <col class="raffiche">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th><!--orario-->
+                            <th></th><!--icona-->
+                            <th scope="col">descrizione</th>
+                            <th scope="col">T<small class="text-muted">(°C)</small></th>
+                            <th scope="col">Tp<small class="text-muted">(°C)</small></th>
+                            <th scope="col">nubi</th><!--percent-->
+                            <th scope="col">prob</th>
+                            <th scope="col">precipitaz.</th><!--mm pioggia-->
+                            <th scope="col">umidità</th><!--mm pioggia-->
+                            <th scope="col">visib.<small class="text-muted">(km)</small></th>
+                            <th scope="col">vento<small class="text-muted"> (m/s)</small></th>
+                            <th scope="col">dir.</th>
+                            <th scope="col">raffiche<small class="text-muted"> (m/s)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <!--le altre righe tr con i td li aggiungo con js-->
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="table1" class="table B  table-striped">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="Tperc">
+                        <col>
+                        <col class="prob">
+                        <col class="precipitazioni">
+                        <col class="umidit">
+                        <col class="visibil">
+                        <col class="vento">
+                        <col class="direzione">
+                        <col class="raffiche">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th><!--orario-->
+                            <th></th><!--icona-->
+                            <th scope="col">descrizione</th>
+                            <th scope="col">T<small class="text-muted">(°C)</small></th>
+                            <th scope="col">Tp<small class="text-muted">(°C)</small></th>
+                            <th scope="col">nubi</th><!--percent-->
+                            <th scope="col">prob</th>
+                            <th scope="col">precipitaz.</th><!--mm pioggia-->
+                            <th scope="col">umidità</th><!--mm pioggia-->
+                            <th scope="col">visib.<small class="text-muted">(km)</small></th>
+                            <th scope="col">vento<small class="text-muted"> (m/s)</small></th>
+                            <th scope="col">dir.</th>
+                            <th scope="col">raffiche<small class="text-muted"> (m/s)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <!--le altre righe tr con i td li aggiungo con js-->
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="table2" class="table C  table-striped">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="Tperc">
+                        <col>
+                        <col class="prob">
+                        <col class="precipitazioni">
+                        <col class="umidit">
+                        <col class="visibil">
+                        <col class="vento">
+                        <col class="direzione">
+                        <col class="raffiche">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th><!--orario-->
+                            <th></th><!--icona-->
+                            <th scope="col">descrizione</th>
+                            <th scope="col">T<small class="text-muted">(°C)</small></th>
+                            <th scope="col">Tp<small class="text-muted">(°C)</small></th>
+                            <th scope="col">nubi</th><!--percent-->
+                            <th scope="col">prob</th>
+                            <th scope="col">precipitaz.</th><!--mm pioggia-->
+                            <th scope="col">umidità</th><!--mm pioggia-->
+                            <th scope="col">visib.<small class="text-muted">(km)</small></th>
+                            <th scope="col">vento<small class="text-muted"> (m/s)</small></th>
+                            <th scope="col">dir.</th>
+                            <th scope="col">raffiche<small class="text-muted"> (m/s)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <!--le altre righe tr con i td li aggiungo con js-->
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="table3" class="table D  table-striped">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="Tperc">
+                        <col>
+                        <col class="prob">
+                        <col class="precipitazioni">
+                        <col class="umidit">
+                        <col class="visibil">
+                        <col class="vento">
+                        <col class="direzione">
+                        <col class="raffiche">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th><!--orario-->
+                            <th></th><!--icona-->
+                            <th scope="col">descrizione</th>
+                            <th scope="col">T<small class="text-muted">(°C)</small></th>
+                            <th scope="col">Tp<small class="text-muted">(°C)</small></th>
+                            <th scope="col">nubi</th><!--percent-->
+                            <th scope="col">prob</th>
+                            <th scope="col">precipitaz.</th><!--mm pioggia-->
+                            <th scope="col">umidità</th><!--mm pioggia-->
+                            <th scope="col">visib.<small class="text-muted">(km)</small></th>
+                            <th scope="col">vento<small class="text-muted"> (m/s)</small></th>
+                            <th scope="col">dir.</th>
+                            <th scope="col">raffiche<small class="text-muted"> (m/s)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <!--le altre righe tr con i td li aggiungo con js-->
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="table4" class="table E  table-striped">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="Tperc">
+                        <col>
+                        <col class="prob">
+                        <col class="precipitazioni">
+                        <col class="umidit">
+                        <col class="visibil">
+                        <col class="vento">
+                        <col class="direzione">
+                        <col class="raffiche">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th><!--orario-->
+                            <th></th><!--icona-->
+                            <th scope="col">descrizione</th>
+                            <th scope="col">T<small class="text-muted">(°C)</small></th>
+                            <th scope="col">Tp<small class="text-muted">(°C)</small></th>
+                            <th scope="col">nubi</th><!--percent-->
+                            <th scope="col">prob</th>
+                            <th scope="col">precipitaz.</th><!--mm pioggia-->
+                            <th scope="col">umidità</th><!--mm pioggia-->
+                            <th scope="col">visib.<small class="text-muted">(km)</small></th>
+                            <th scope="col">vento<small class="text-muted"> (m/s)</small></th>
+                            <th scope="col">dir.</th>
+                            <th scope="col">raffiche<small class="text-muted"> (m/s)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <!--le altre righe tr con i td li aggiungo con js-->
+                </table>
+            </div>
+            <h2 id="meteoUnsuccesMessage"></h2>
+            <div class="advertising-box"></div><!-- <img style="width: 100%" src="https://pixnio.com/free-images/2017/08/25/2017-08-25-09-31-06.jpg"> -->
+        </div>
+        <div class="right-advertising"></div>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <footer><!-- style="position: relative;width: 100%;bottom: 0%;clear: both;padding-top: 20px;"-->
+      <p class="float-end"><a href="#">Back to top</a></p>
+      <p>&copy; 2022 Gabriele Bellini &middot; <a href="/Privacy">Privacy</a> &middot; <a href="/Terms">Terms</a></p>
+    </footer>
+
+
+
+    <!-- SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./TableScript.js"></script>
+    <script src="./CardsScriptFunctions.js"></script>
+    <script src="./CarouselScriptFunctions.js"></script>
+    <script>
+      let urls= '<%= urls_catalogue%>'.split(',')
+      let city= '<%= city%>'.toUpperCase() //document.title.split(' ').slice(1, -1).join(" ").toUpperCase()
+      let country= '<%= country%>'
+
+      // script per riempire la tabella del meteo
+      TableMenager(city,country)
+      // script per gestire il localstorage degli url delle passate ricerche
+      CardsMenager(urls,city)
+      //script per riempire il carosello
+      CarouselMenager(urls,city)
+    </script>
+    <script src="./WorkerMaster.js"></script>  
+  </body>
+</html>

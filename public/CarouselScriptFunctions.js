@@ -10,7 +10,8 @@ function CarouselMenager(urls,city){
         let item= document.createElement("div")
         let img= document.createElement("img")
         img.className = "cover"
-        img.src= urls[i]
+        img.setAttribute('data-src',urls[i])
+        img.alt= "Immagine "+i+" di "+urls.length+" del carosello"
 
         button.type="button";
         button.setAttribute("data-bs-target", "#myCarousel");
@@ -36,11 +37,11 @@ function CarouselMenager(urls,city){
             secondoDiv.className= "carousel-caption text-start"
             let h1= document.createElement("h1")
             h1.innerText= ("Meteo "+city).toUpperCase()
-            h1.style.backgroundColor= "rgba(0, 0, 0, 0.35)"
+            h1.style.backgroundColor= "rgba(0, 0, 0, 0.55)"
             h1.style.display= "table"
             let primoP= document.createElement("p")
             primoP.innerText= "Il meteo di oggi e dei prossimi giorni"
-            primoP.style.backgroundColor= "rgba(0, 0, 0, 0.35)"
+            primoP.style.backgroundColor= "rgba(0, 0, 0, 0.55)"
             primoP.style.display= "table"
             let secondoP= document.createElement("p")
             let a= document.createElement("a")
