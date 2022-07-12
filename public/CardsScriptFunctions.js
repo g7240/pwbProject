@@ -53,7 +53,6 @@ function CardsMenager(urls,title){
         let img= document.getElementById("img_"+i)
         img.setAttribute('data-src',localStorage.getItem("url"+i))
         img.alt= "Immagine "+i+" di 3 carte"
-        console.log("Iserito l'url nella carta",i)
         let h2= document.getElementById("h2_name"+i)
         h2.innerText= localStorage.getItem("name"+i)
         let link= document.getElementById("a_url"+i)

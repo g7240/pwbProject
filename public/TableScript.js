@@ -26,7 +26,7 @@ function TableMenager(cit,coun){
                     let td1= document.createElement("td")
                     let img= document.createElement("img")
                     img.className= "ring" //"img-fluid" 
-                    img.setAttribute('src',"http://openweathermap.org/img/wn/"+o.list[i].weather[0].icon+"@2x.png")
+                    img.setAttribute('src',"https://openweathermap.org/img/wn/"+o.list[i].weather[0].icon+"@2x.png")
                     img.alt= "icona "+o.list[i].weather[0].main+" id "+o.list[i].weather[0].id
                     td1.appendChild(img)
                     let td2= document.createElement("td")
