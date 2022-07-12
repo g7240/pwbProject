@@ -8,7 +8,7 @@ const port = process.env.PORT || 9000
 
 
 app.use(express.static(__dirname + '/public/'))
-app.use('/favicon.ico', express.static('images/immagine.png'));
+app.use('/favicon.ico', express.static(__dirname + '/public/images/immagine.png'));
 /** Servo pagine statiche */
 app.get('/Terms', (req, res) => {
   console.log("rispondo con Terms")
