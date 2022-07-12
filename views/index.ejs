@@ -371,7 +371,7 @@
       <p class="float-end"><a href="#">Back to top</a></p>
       <p>&copy; 2022 Gabriele Bellini &middot; <a href="/Privacy">Privacy</a> &middot; <a href="/Terms">Terms</a></p>
     </footer>
-
+    <iframe id="iframe" src="" width="320" height="180" style="border:1px solid black; position:fixed; right:0; bottom: 0;display: none"></iframe>
 
 
     <!-- SCRIPT -->
@@ -379,18 +379,20 @@
     <script src="./TableScript.js"></script>
     <script src="./CardsScriptFunctions.js"></script>
     <script src="./CarouselScriptFunctions.js"></script>
+    <script src="./LiveVideoScriptFunction.js"></script>
     <script>
       let urls= '<%= urls_catalogue%>'.split(',')
       let city= '<%= city%>'.toUpperCase() //document.title.split(' ').slice(1, -1).join(" ").toUpperCase()
       let country= '<%= country%>'
 
+      //script per riempire il carosello
+      CarouselMenager(urls,city)
       // script per riempire la tabella del meteo
       TableMenager(city,country)
       // script per gestire il localstorage degli url delle passate ricerche
       CardsMenager(urls,city)
-      //script per riempire il carosello
-      CarouselMenager(urls,city)
     </script>
     <script src="./WorkerMaster.js"></script>  
+    
   </body>
 </html>

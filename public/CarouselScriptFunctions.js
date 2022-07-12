@@ -47,7 +47,9 @@ function CarouselMenager(urls,city){
             let a= document.createElement("a")
             a.className= "btn btn-lg btn-primary"
             a.href= '#'
-            a.innerText= "Sign up today"
+            a.setAttribute("onclick","iframeVisibility()")
+            a.setAttribute("id","videoButton")
+            a.innerText= "video"
 
             secondoP.appendChild(a)
             secondoDiv.appendChild(h1)

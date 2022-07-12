@@ -4,9 +4,6 @@ let dizGiorni=["Lun","Mar",'Mer','Gio','Ven','Sab','Dom']
 for(let i=1;i<5;i++)
     document.getElementById("labelDay"+i).innerText= dizGiorni[(data.getDay()-1+i)%7]+' '+(data.getDate()+i)
 
-/* Seleziono città e paese di cui disporre il meteo */
-//let cit= document.title.split(' ')[1]
-//let coun= document.title.split(' ')[2]
 
 /* Qui riempio le tabelle vuote con righe contenenti i dati del medeo ottenuti tramite API */
 //let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=45.4642&lon=9.18998&appid=8a61bf56d4672adf8cb76531ec758bb7&lang=it';
@@ -16,9 +13,9 @@ function TableMenager(cit,coun){
     .then(res => res.json())
     .then(o =>{
         if(o.cod=="200"){
-            console.log({"ricerca":'https://api.openweathermap.org/data/2.5/forecast?q='+cit+','+coun})
+            //console.log({"ricerca":'https://api.openweathermap.org/data/2.5/forecast?q='+cit+','+coun})
             let i, j, tmp, data
-            console.log(o)
+            //console.log(o)
             let count= 0
             for(i=0;i<o.cnt;i++){
                 data= o.list[i].dt_txt.split(' ')[0]
@@ -81,13 +78,18 @@ function TableMenager(cit,coun){
                 if(count>=5)
                     break
             }
+            //Cerco qualche video/immagine live della giornata
+            LiveVideoMenager(o.city.coord.lat,o.city.coord.lon)
         }
-        else
+        else{
             document.getElementById("meteoUnsuccesMessage").innerText= "Errore nel caricamento dei dati meteo. Codice errore: "+o.cod+'. Messaggio di errore: "'+o.message+'"'
+            LiveVideoMenagerError()
+        }
     })
     .catch((err) => {
         console.log(err)
         document.getElementById("meteoUnsuccesMessage").innerText= err
+        LiveVideoMenagerError()
     });
 }
 

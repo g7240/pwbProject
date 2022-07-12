@@ -1,3 +1,4 @@
+console.log("Ho caricato il web worker delle immagini")
 const ImageLoaderWorker = new Worker('./WorkerSlave.js')
 const imgElements = document.querySelectorAll('img[data-src]')
 // Once again, it's possible that messages could be returned before the

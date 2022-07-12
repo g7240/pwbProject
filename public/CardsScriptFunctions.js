@@ -25,7 +25,7 @@ function CardsMenager(urls,title){
     else{
         let bool= true
         
-        console.log({"titolo":title})
+        //console.log({"titolo":title})
         if (localStorage.getItem("name0")==title)
             bool= false
         else if (localStorage.getItem("name1")==title){

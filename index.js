@@ -9,6 +9,10 @@ const port = 9000
 
 app.use(express.static(__dirname + '/public/'))
 /** Servo pagine statiche */
+app.get('/error404', (req, res) => {
+  console.log("rispondo con error 404")
+  res.send("<h1>Error 404</h1><p>Page not found</p>")
+})
 app.get('/Terms', (req, res) => {
   console.log("rispondo con Terms")
   res.send("<h1>Terms page</h1><p>This page is a placeholder for a possible terms page</p>")
@@ -34,7 +38,7 @@ app.get('/search', (req, res) => {
   console.log("rispondo con pagina creata su misura")
   let urls=[] //["https://www.fashiontimes.it/wp-content/uploads/media/2021/02/cucciolo-di-cani.jpg","https://assets.puzzlefactory.pl/puzzle/196/010/original.jpg","https://w8x8f6n3.stackpathcdn.com/wp-content/uploads/2015/09/maxresdefault5.jpg"]
   const {city,country}= req.query
-  
+
   const client = new GoogleImages('173566bad65e72385','AIzaSyBwQt4tzdNR6l3t8cw7eVcBSozQrG9UG4M');
   if(city=="undefined" && country=="undefined"){
     urls.push("https://live.staticflickr.com/2693/4453498888_f576a9afd5_b.jpg")
@@ -42,7 +46,8 @@ app.get('/search', (req, res) => {
     urls.push("https://upload.wikimedia.org/wikipedia/commons/b/b7/Sunset_above_the_clouds.jpg")
     res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
   }
-  else
+  else{
+
     client.search(city, {imgSize: "xlarge"})
     .then(images => {// https://unsplash.com/ https://it.wikipedia.org/
       //console.log(images)
@@ -66,6 +71,7 @@ app.get('/search', (req, res) => {
       console.log({"urls mandati non bene":urls})
       res.render('./index.ejs',{"city":city, "country":country, "urls_catalogue": urls.toString()})
     });
+  }
 }) 
 
 /** REINDIRIZZO DA INDEX A QUERY TRAMITE GEOLOCALIZZAZIONE IP */
@@ -91,7 +97,7 @@ app.get('/', (req, res) => {
   })
   .catch((error) => {
     console.log(error)
-    res.send({"satatus":"andataMale","risposta":error});//error.data
+    res.send({"satatus":"IpGeolocAndataMale","risposta":error});//error.data
   });
   
 })
