@@ -3,16 +3,12 @@ const path= require('path')
 const GoogleImages = require('google-images');
 //const { stringify } = require('querystring');
 const app = express()
-const port = 9000
+const port = process.env.PORT || 9000
 
 
 
 app.use(express.static(__dirname + '/public/'))
 /** Servo pagine statiche */
-app.get('/error404', (req, res) => {
-  console.log("rispondo con error 404")
-  res.send("<h1>Error 404</h1><p>Page not found</p>")
-})
 app.get('/Terms', (req, res) => {
   console.log("rispondo con Terms")
   res.send("<h1>Terms page</h1><p>This page is a placeholder for a possible terms page</p>")
@@ -24,6 +20,10 @@ app.get('/Privacy', (req, res) => {
 app.get('/ChiSiamo', (req, res) => {
   console.log("rispondo con ChiSiamo")
   res.send("<h1>Autore: Gabriele Bellini</h1><p>Studente di Sicurezza dei Sistemi e delle Reti Informatiche all'UniMI</p>")
+})
+app.get('/error404', (req, res) => {
+  console.log("rispondo con error 404")
+  res.sendFile("./public/error404.html",{root:__dirname})
 })
 app.get('/Relazione', (req, res) => {
   console.log("rispondo con Relazione")

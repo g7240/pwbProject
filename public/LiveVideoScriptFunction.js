@@ -13,14 +13,14 @@ function iframeVisibility(){
 
 function LiveVideoMenagerError(){
     let iframe= document.getElementById("iframe")
-    let url= window.location.host + "/error404"
+    let url= window.location.protocol +'//'+ window.location.host + "/error404"
     console.log("reindirizzo l'iframe a non trovato: all'url ",url)
     iframe.setAttribute("src",url)
 }
-
+//"https://pwb-project.vercel.app/error404"// window.location.protocol +'/'+ window.location.host + "/error404"
 function LiveVideoMenager(lat,lon){
     let iframe= document.getElementById("iframe")
-    let url= window.location.hostname + "/error404"
+    let url= window.location.protocol +'//'+ window.location.host + "/error404"
 
     const URL = "https://api.windy.com/api/webcams/v2/list/nearby="+lat+","+lon+",5/orderby=popularity,desc/limit=20?show=webcams:player,image&lang=it&key=UhJKmIPKWbD93516TJyvwM44A0u1zzm8"
     fetch(URL)
@@ -65,7 +65,7 @@ function LiveVideoMenager(lat,lon){
         throw "cattiva risposta windly.com"
     })
     .catch((error) => {
-        onsole.log({"satatus":"WbcamLiveAndataMale","risposta":error})
+        console.log({"satatus":"WbcamLiveAndataMale","risposta":error})
         iframe.setAttribute("src",url)
     });
 }
