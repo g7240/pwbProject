@@ -1,6 +1,6 @@
-console.log("Ho caricato il web worker delle immagini")
 const ImageLoaderWorker = new Worker('./WorkerSlave.js')
 const imgElements = document.querySelectorAll('img[data-src]')
+console.log("Immagini da workare",imgElements)
 // Once again, it's possible that messages could be returned before the
 // listener is attached, so we need to attach the listener before we pass
 // image URLs to the web worker
