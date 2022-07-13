@@ -23,7 +23,7 @@
 
 
 
-  <body style="overflow: auto">
+  <body ><!--style="overflow: auto"-->
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
@@ -46,7 +46,7 @@
                 <a class="nav-link" href="/Archiv">Archivio documenti</a><!-- naviga libero nella cartella dock-->
               </li>
             </ul>
-            <div id="selectNation" style="width: 3.7cm;" class="d-flex"></div><!-- https://www.w3schools.com/tags/att_select_form.asp -->
+            <div id="selectNation" class="d-flex"></div><!-- https://www.w3schools.com/tags/att_select_form.asp -->
             <script>
               fetch("./selectNationCode.html")
               .then(response => {
@@ -90,19 +90,19 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
-            <img id="img_1" class="card-img-top" alt="Card image cap" style="max-height: 180px; width: auto">
+            <img id="img_1" class="card-img-top" alt="Card image cap">
             <h2 id="h2_name1">Heading</h2>
             <p>Cerca in ogni posto del mondo, a qualsiasi ora del giorno, senza limiti</p>
             <p><a id="a_url1" class="btn btn-secondary" href="#">Vai al meteo &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <img id="img_2" class="card-img-top" alt="Card image cap" style="max-height: 180px; width: auto">
+            <img id="img_2" class="card-img-top" alt="Card image cap">
             <h2 id="h2_name2">Heading</h2>
             <p>Nessun posto è troppo lontano, lasciati guidare dalla tua immaginazione</p>
             <p><a id="a_url2" class="btn btn-secondary" href="#">Vai al meteo &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <img id="img_3" class="card-img-top" alt="Card image cap" style="max-height: 180px; width: auto">
+            <img id="img_3" class="card-img-top" alt="Card image cap">
             <div class="card-body">
               <h2 id="h2_name3">Heading</h2>
               <p>Esplora, viaggia e pianivica ogni tuo spostamento con il nostro sito di meteo</p>
@@ -369,19 +369,19 @@
       </div>
     </main>
     <!-- FOOTER -->
-    <footer><!-- style="position: relative;width: 100%;bottom: 0%;clear: both;padding-top: 20px;"-->
+    <footer>
       <p class="float-end"><a href="#">Back to top</a></p>
       <p>&copy; 2022 Gabriele Bellini &middot; <a href="/Privacy">Privacy</a> &middot; <a href="/Terms">Terms</a></p>
     </footer>
-    <iframe id="iframe" title="Immagini recenti o in diretta" src="" width="320" height="180" style="border:1px solid black; position:fixed; right:0; bottom: 0;display: none"></iframe>
+    <iframe id="iframe" title="Immagini recenti o in diretta" src="" style="display: none;"></iframe>
 
 
     <!-- SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./LiveVideoScriptFunction.js"></script>
     <script src="./TableScript.js"></script>
     <script src="./CardsScriptFunctions.js"></script>
     <script src="./CarouselScriptFunctions.js"></script>
-    <script src="./LiveVideoScriptFunction.js"></script>
     <script>
       let urls= '<%= urls_catalogue%>'.split(',')
       let city= '<%= city%>'.toUpperCase() //document.title.split(' ').slice(1, -1).join(" ").toUpperCase()
@@ -389,7 +389,7 @@
 
       //script per riempire il carosello
       CarouselMenager(urls,city)
-      // script per riempire la tabella del meteo
+      // script per riempire la tabella del meteo e video-diretta (l'iframe)
       TableMenager(city,country)
       // script per gestire il localstorage degli url delle passate ricerche
       CardsMenager(urls,city)

@@ -1,7 +1,61 @@
+
+html, body {
+    padding: 0;
+    margin:0;     /* This is used to reset any browser-default margins */
+    height:100vh; /* This is needed to overcome a Chrome bug. */
+    width:100vw;
+    max-width: 100%;
+    overflow-x: hidden; 
+}
+
 p{
     color: yellowgreen;
 }
-.cover {
-    object-fit: cover;
-    object-position: 50% top;
+
+@media (min-width:350px){
+    .card-img-top{
+        height: 180px;
+        width: auto
+    }
+}
+@media (max-width: 350px){
+    .card-img-top{
+        max-height: 180px;
+        object-fit: contain;
+    }
+}
+
+#selectNation{
+    width: 3.7cm;
+}
+
+footer{
+    width: 85%;
+    /*margin-top: 930px;
+    margin-bottom: 500px;*/
+    padding-top: 2cm;
+    padding-bottom: 1.4cm;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+footer p{
+    padding-top: 2cm;
+    border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+
+#iframe{
+    min-width: 202px;   /* Questo serve perchè altrimenti non funziona il video */
+    min-height: 112px;  /*quindi meglio sproporzionato che rotto */
+    max-width: 100%;
+    width:320px;
+    height: auto;
+
+    border:1px solid black; 
+    position:fixed; 
+    right:0; 
+    bottom: 0; 
+    z-index: 1;
+    display: none
 }

@@ -1,3 +1,9 @@
+/*Gestisco il resize delle immagini nel carousel*/
+.cover {
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
