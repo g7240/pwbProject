@@ -370,9 +370,16 @@
     </main>
     <!-- FOOTER -->
     <footer>
-      <p class="float-end"><a href="#">Back to top</a></p>
+      <p class="float-end"><a  onclick="BackToTop()" href="javascript:;" id="totop" >Back to top</a></p>
       <p>&copy; 2022 Gabriele Bellini &middot; <a href="/Privacy">Privacy</a> &middot; <a href="/Terms">Terms</a></p>
     </footer>
+    <script>
+      function BackToTop(){
+        console.log("CHIAMATO TO TOP")
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
     <iframe id="iframe" title="Immagini recenti o in diretta" src="" style="display: none;"></iframe>
 
 
