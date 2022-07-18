@@ -1,20 +1,11 @@
 const express = require('express')
 const path= require('path')
 const GoogleImages = require('google-images');
-//per l'https
-var https = require('https');
-var http = require('http');
-var fs = require('fs');
-
+//const { stringify } = require('querystring');
 const app = express()
 const port = process.env.PORT || 9000
 
-var options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
-};
 
-https.createServer(options, app).listen(port);
 
 app.use(express.static(__dirname + '/public/'))
 app.use('/favicon.ico', express.static(__dirname + '/public/images/immagine.png'));
@@ -112,9 +103,9 @@ app.get('/', (req, res) => {
   
 })
 
-/*
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
-*/
+
+
 
