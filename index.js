@@ -28,7 +28,7 @@ app.get('/error404', (req, res) => {
 })
 app.get('/Relazione', (req, res) => {
   console.log("rispondo con Relazione")
-  res.sendFile("./public/Relazione.html",{root:__dirname})
+  res.sendFile("./public/RelazioneBelliniGabriele.pdf",{root:__dirname})
 })
 
 

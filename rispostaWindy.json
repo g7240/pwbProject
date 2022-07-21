@@ -1,0 +1,36 @@
+{
+    "status":"OK",
+    "result":
+    {
+        "offset":0,
+        "limit":20,
+        "total":2,
+        "webcams":
+        [
+            {
+                "id":"1302811585",
+                "status":"active",
+                "title":"Pisa",
+                "image":
+                {
+                    "current":{"icon":"https://images-webcams.windy.com/85/1302811585/current/icon/1302811585.jpg","thumbnail":"https://images-webcams.windy.com/85/1302811585/current/thumbnail/1302811585.jpg","preview":"https://images-webcams.windy.com/85/1302811585/current/preview/1302811585.jpg","toenail":"https://images-webcams.windy.com/85/1302811585/current/thumbnail/1302811585.jpg"},"sizes":{"icon":{"width":48,"height":48},"thumbnail":{"width":200,"height":112},"preview":{"width":400,"height":224},"toenail":{"width":200,"height":112}},
+                    "daylight":{"icon":"https://images-webcams.windy.com/85/1302811585/daylight/icon/1302811585.jpg","thumbnail":"https://images-webcams.windy.com/85/1302811585/daylight/thumbnail/1302811585.jpg","preview":"https://images-webcams.windy.com/85/1302811585/daylight/preview/1302811585.jpg","toenail":"https://images-webcams.windy.com/85/1302811585/daylight/thumbnail/1302811585.jpg"},"update":1657621081
+                },
+                "player":{
+                    "live":{"available":false,"embed":""},
+                    "day":{"available":true,"link":"https://www.windy.com/webcams/1302811585","embed":"https://webcams.windy.com/webcams/public/embed/player/1302811585/day"},
+                    "month":{"available":true,"link":"https://www.windy.com/webcams/1302811585","embed":"https://webcams.windy.com/webcams/public/embed/player/1302811585/month"},
+                    "year":{"available":true,"link":"https://www.windy.com/webcams/1302811585","embed":"https://webcams.windy.com/webcams/public/embed/player/1302811585/year"},
+                    "lifetime":{"available":true,"link":"https://www.windy.com/webcams/1302811585","embed":"https://webcams.windy.com/webcams/public/embed/player/1302811585/lifetime"}
+                }
+            },
+            {
+                "id":"1481026994",
+                "status":"active",
+                "title":"Pisa › Sud: PANORAMA con vista in lontananza Torre Duomo e Battistero di",
+                "image":{"current":{"icon":"https://images-webcams.windy.com/94/1481026994/current/icon/1481026994.jpg","thumbnail":"https://images-webcams.windy.com/94/1481026994/current/thumbnail/1481026994.jpg","preview":"https://images-webcams.windy.com/94/1481026994/current/preview/1481026994.jpg","toenail":"https://images-webcams.windy.com/94/1481026994/current/thumbnail/1481026994.jpg"},"sizes":{"icon":{"width":48,"height":48},"thumbnail":{"width":200,"height":112},"preview":{"width":400,"height":224},"toenail":{"width":200,"height":112}},"daylight":{"icon":"https://images-webcams.windy.com/94/1481026994/daylight/icon/1481026994.jpg","thumbnail":"https://images-webcams.windy.com/94/1481026994/daylight/thumbnail/1481026994.jpg","preview":"https://images-webcams.windy.com/94/1481026994/daylight/preview/1481026994.jpg","toenail":"https://images-webcams.windy.com/94/1481026994/daylight/thumbnail/1481026994.jpg"},"update":1657621240},
+                "player":{"live":{"available":false,"embed":""},"day":{"available":true,"link":"https://www.windy.com/webcams/1481026994","embed":"https://webcams.windy.com/webcams/public/embed/player/1481026994/day"},"month":{"available":true,"link":"https://www.windy.com/webcams/1481026994","embed":"https://webcams.windy.com/webcams/public/embed/player/1481026994/month"},"year":{"available":true,"link":"https://www.windy.com/webcams/1481026994","embed":"https://webcams.windy.com/webcams/public/embed/player/1481026994/year"},"lifetime":{"available":true,"link":"https://www.windy.com/webcams/1481026994","embed":"https://webcams.windy.com/webcams/public/embed/player/1481026994/lifetime"}}
+            }
+        ]
+    }
+}

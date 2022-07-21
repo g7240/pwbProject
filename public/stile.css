@@ -25,8 +25,11 @@ p{
     }
 }
 
-#selectNation{
+.spaceNavElem{
     width: 3.7cm;
+}
+.bg-custome{
+    background-color: #212529;
 }
 
 footer{
